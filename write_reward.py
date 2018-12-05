@@ -3,7 +3,7 @@ import numpy as np
 import math
 
 new_df = []
-df = pd.read_csv('edges_small.csv')
+df = pd.read_csv('edges.csv')
 
 def distance(p1, p2):
 	x1 = float(p1[0])
@@ -37,7 +37,7 @@ ndf = pd.DataFrame(new_df, columns = ['S', 'A', 'R', 'SP'])
 
 #print ndf
 
-ndf.to_csv("SARSP_small.csv")
+ndf.to_csv("SARSP.csv")
 
 # df2 = pd.read_csv('SARSP.csv')
 # grouped = df2.groupby(by="S")

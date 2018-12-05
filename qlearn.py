@@ -91,7 +91,7 @@ def createPolicy(Q, states):
 
 		if s in Q:
 			curPol = max(Q[s].iteritems(), key=operator.itemgetter(1))[0]
-			policy.append(curPol)
+			policy.append(s + " to " + curPol)
 		# else:
 		# 	policy.append(random.randint(1,4))
 
@@ -152,7 +152,7 @@ def createPolicy(Q, states):
 def main():
 
 	#discount = 0.95
-	discount = 0.805
+	discount = 0.95
 
 	#UNCOMMENT FOR SMALL
 	# inputfilename = 'small.csv'
@@ -169,12 +169,17 @@ def main():
 
 
 	# #UNCOMMENT FOR LARGE
-	inputfilename = 'SARSP.csv'
+	inputfilename = 'sarsp.csv'
 	outputfilename = 'policy'
 
 	data = pd.read_csv(inputfilename)
-	grouped = data.groupby(by="S")
-	states = grouped.groups.keys()
+	grouped = data.groupby(by="s")
+	#states = grouped.groups.keys()
+	states = []
+	for state in data['s']:
+		if state not in states: states.append(state)
+
+	print states
 
 
 
